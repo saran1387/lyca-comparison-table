@@ -240,6 +240,10 @@ body {
   }
 }
 
+.mobile-view {
+  display: none;
+}
+
 /* MOBILE: Carousel slide */
 @media (max-width: 767px) {
 
@@ -399,4 +403,7 @@ body {
     padding: 0 2px;
     font-size: 11px;
   }
+  .mobile-view {
+  display: block;
+}
 }
