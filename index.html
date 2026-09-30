@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIM Only Deals UK Comparison</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="comparison-section">
+
+  <h2 class="comparison-title">SIM Only Deals UK Comparison</h2>
+
+  <div class="table-outer">
+    <div class="table-scroll" id="tableScroll">
+      <table class="comparison-table">
+
+        <thead>
+          <tr class="head-row">
+            <th class="feature-col" scope="col">Feature</th>
+            <th class="lyca-col" scope="col">Lyca Mobile</th>
+            <th class="cmp" scope="col">giffgaff</th>
+            <th class="cmp" scope="col">SMARTY</th>
+            <th class="cmp" scope="col">Three</th>
+            <th class="cmp" scope="col">O2</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="feature-col">Data</td>
+            <td class="lyca-col">30GB</td>
+            <td class="cmp">30GB</td>
+            <td class="cmp">40GB</td>
+            <td class="cmp">40GB</td>
+            <td class="cmp">20GB</td>
+          </tr>
+
+          <tr>
+            <td class="feature-col">Monthly cost</td>
+            <td class="lyca-col">£5.00*</td>
+            <td class="cmp">£15</td>
+            <td class="cmp">£10</td>
+            <td class="cmp">£12</td>
+            <td class="cmp">£27</td>
+          </tr>
+
+          <tr>
+            <td class="feature-col">UK Mins/Texts</td>
+            <td class="lyca-col">Unlimited</td>
+            <td class="cmp">Unlimited</td>
+            <td class="cmp">Unlimited</td>
+            <td class="cmp">Unlimited</td>
+            <td class="cmp">Unlimited</td>
+          </tr>
+
+          <tr>
+            <td class="feature-col">Contract</td>
+            <td class="lyca-col">30-day</td>
+            <td class="cmp">30-day</td>
+            <td class="cmp">30-day</td>
+            <td class="cmp">
+              <span class="d-only">PAYG / contract options</span>
+              <span class="m-only">PAYG/contract</span>
+            </td>
+            <td class="cmp">30-day</td>
+          </tr>
+
+          <tr class="tall-row">
+            <td class="feature-col">EU roaming (Data Cap)</td>
+            <td class="lyca-col">✓ 12GB</td>
+            <td class="cmp">✓ 5GB</td>
+            <td class="cmp">✓ 12GB</td>
+            <td class="cmp">✓ 6GB</td>
+            <td class="cmp">X No</td>
+          </tr>
+
+          <tr class="tall-row">
+            <td class="feature-col">China Roaming (Data cap)</td>
+            <td class="lyca-col">✓ 500MB</td>
+            <td class="cmp">X No</td>
+            <td class="cmp">X No</td>
+            <td class="cmp">X No</td>
+            <td class="cmp">X No</td>
+          </tr>
+
+          <tr class="tall-row">
+            <td class="feature-col">International calling included</td>
+            <td class="lyca-col">✓ 100 Minutes<br>(48 countries)</td>
+            <td class="cmp">X No</td>
+            <td class="cmp">X No</td>
+            <td class="cmp">X No</td>
+            <td class="cmp">X No</td>
+          </tr>
+
+          <tr>
+            <td class="feature-col">Wi-Fi Calling</td>
+            <td class="lyca-col">✓ Yes</td>
+            <td class="cmp">✓ Yes</td>
+            <td class="cmp">✓ Yes</td>
+            <td class="cmp">✓ Yes</td>
+            <td class="cmp">✓ Yes</td>
+          </tr>
+
+          <tr class="last-row">
+            <td class="feature-col">Credit check</td>
+            <td class="lyca-col">X No</td>
+            <td class="cmp">X No</td>
+            <td class="cmp">X No</td>
+            <td class="cmp">X No</td>
+            <td class="cmp">X No</td>
+          </tr>
+
+          <!-- Button sits under the blue Lyca column and stays fixed on mobile -->
+          <tr class="cta-row">
+            <td class="feature-col"></td>
+            <td class="lyca-col">
+              <button class="buy-plan-btn" type="button">Buy Plan</button>
+            </td>
+            <td class="cmp"></td>
+            <td class="cmp"></td>
+            <td class="cmp"></td>
+            <td class="cmp"></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+  <!-- Mobile carousel dots (hidden on desktop) -->
+  <div class="carousel-dots" id="carouselDots">
+    <button type="button" class="is-active" aria-label="Compare with giffgaff"></button>
+    <button type="button" aria-label="Compare with SMARTY"></button>
+    <button type="button" aria-label="Compare with Three"></button>
+    <button type="button" aria-label="Compare with O2"></button>
+  </div>
+
+  <div class="comparison-notes">
+    <p>* 50% off for the 1st month - Original Price £10</p>
+    <p>Note: This SIM-only deals comparison table is correct as of 9th September 2026 (6:00pm) and based on published information on all network websites</p>
+  </div>
+
+</section>
+
+<script>
+(function () {
+  var scroller = document.getElementById('tableScroll');
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#carouselDots button'));
+  var firstCol = scroller.querySelector('thead th.cmp');
+
+  function step() { return firstCol.getBoundingClientRect().width; }
+
+  function update() {
+    var i = Math.round(scroller.scrollLeft / step());
+    i = Math.max(0, Math.min(dots.length - 1, i));
+    dots.forEach(function (d, n) {
+      d.classList.toggle('is-active', n === i);
+      d.setAttribute('aria-current', n === i ? 'true' : 'false');
+    });
+  }
+
+  scroller.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+
+  dots.forEach(function (d, n) {
+    d.addEventListener('click', function () {
+      scroller.scrollTo({ left: n * step(), behavior: 'smooth' });
+    });
+  });
+
+  update();
+})();
+</script>
+
+</body>
+</html>

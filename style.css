@@ -1,0 +1,402 @@
+@font-face {
+  font-family: "GTEestiLCDisplayRegular";
+  src: url("GT-Eesti-LC-Display-Regular.a24afe5e.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --blue: #2a66da;
+  --ink: #2b3650;
+  --feature-bg: #eef7fe;
+  --feature-line: #dcebf7;
+  --frame: #d3e6f6;
+  --line: #e6e8ec;
+  --dot: #c9ced8;
+  --green: #08dc7d;
+  --bleed: 14px;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "GTEestiLCDisplayRegular", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: #fff;
+}
+
+/* ---------- Layout ---------- */
+.comparison-section {
+  max-width: 1250px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.comparison-title {
+  margin: 0 0 44px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.table-outer {
+  container-type: inline-size;
+  width: 100%;
+}
+
+.table-scroll {
+  padding-top: var(--bleed);
+}
+
+.comparison-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.comparison-table th,
+.comparison-table td {
+  height: 44px;
+  padding: 0 12px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 400;
+}
+
+.comparison-table thead th {
+  height: 64px;
+  font-weight: 700;
+}
+
+
+/* ---------- Feature column ---------- */
+.comparison-table .feature-col {
+  padding-left: 20px;
+  text-align: left;
+  background: var(--feature-bg);
+  border-bottom: 1px solid var(--feature-line);
+}
+
+.comparison-table thead .feature-col {
+  font-weight: 700;
+}
+
+.comparison-table .last-row .feature-col {
+  border-bottom: 0;
+}
+
+/* Rounded outer corners - Feature column. */
+.comparison-table .feature-col {
+  position: relative;
+}
+
+.comparison-table thead .feature-col::before,
+.comparison-table .last-row .feature-col::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: var(--radius);
+  height: var(--radius);
+  pointer-events: none;
+}
+
+.comparison-table thead .feature-col::before {
+  top: 0;
+  background: radial-gradient(circle at 100% 100%, transparent calc(var(--radius) - 0.5px), #fff var(--radius));
+}
+
+.comparison-table .last-row .feature-col::before {
+  bottom: 0;
+  background: radial-gradient(circle at 100% 0, transparent calc(var(--radius) - 0.5px), #fff var(--radius));
+}
+
+/* Lyca column */
+.comparison-table .lyca-col {
+  position: relative;
+  background: var(--blue);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.comparison-table thead .lyca-col {
+  font-weight: 700;
+}
+
+.comparison-table thead .lyca-col::before,
+.comparison-table .last-row .lyca-col::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--bleed);
+  background: var(--blue);
+}
+
+.comparison-table thead .lyca-col::before {
+  bottom: 100%;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.comparison-table .last-row .lyca-col {
+  border-bottom: 0;
+}
+
+.comparison-table .last-row .lyca-col::after {
+  top: 100%;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+/* Competitor columns */
+.comparison-table .cmp {
+  background: #fff;
+  border-right: 2px solid var(--frame);
+  border-bottom: 1px solid var(--line);
+}
+
+.comparison-table thead .cmp {
+  border-top: 2px solid var(--frame);
+}
+
+.comparison-table thead .cmp:last-child {
+  border-top-right-radius: var(--radius);
+}
+
+.comparison-table .last-row .cmp {
+  border-bottom: 2px solid var(--frame);
+}
+
+.comparison-table .last-row .cmp:last-child {
+  border-bottom-right-radius: var(--radius);
+}
+
+/* Buy Plan row */
+.comparison-table .cta-row td,
+.comparison-table .cta-row .feature-col,
+.comparison-table .cta-row .lyca-col,
+.comparison-table .cta-row .cmp {
+  height: auto;
+  padding: calc(var(--bleed) + 10px) 0 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.comparison-table .cta-row .lyca-col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.buy-plan-btn {
+  width: 89%;
+  height: 48px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--blue);
+  color: #fff;
+  font-family: inherit;
+  font-size: 17px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.buy-plan-btn:hover,
+.buy-plan-btn:focus-visible {
+  background: #1f55bf;
+}
+
+.carousel-dots {
+  display: none;
+}
+
+.comparison-notes {
+  margin-top: 28px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.comparison-notes p {
+  margin: 0 0 12px;
+}
+
+.m-only { display: none; }
+
+/* DESKTOP ONLY: wider giffgaff / SMARTY / Three / O2 columns */
+@media (min-width: 768px) {
+  
+  .comparison-table th.feature-col { width: 22%; }
+  .comparison-table th.lyca-col    { width: 14%; }
+
+  .comparison-table td.cmp {
+    white-space: nowrap;
+  }
+}
+
+/* MOBILE: Carousel slide */
+@media (max-width: 767px) {
+
+  :root {
+    --bleed: 9px;
+    --radius: 8px;
+    --cta-h: 49px; 
+  }
+
+  .d-only { display: none; }
+  .m-only { display: inline; }
+
+  .comparison-section {
+    margin: 24px auto;
+    padding: 0 16px;
+  }
+
+  .comparison-title {
+    margin-bottom: 26px;
+    font-size: 18px;
+  }
+
+  /* horizontal scroller with snapping */
+  .table-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 65cqw;          /* feature + lyca width */
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .comparison-table {
+    width: 205cqw;
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .comparison-table th.feature-col { width: 33cqw; }
+  .comparison-table th.lyca-col    { width: 32cqw; }
+  .comparison-table th.cmp         { width: 35cqw; scroll-snap-align: start; }
+
+  .comparison-table th,
+  .comparison-table td {
+    height: 26px;
+    padding: 0 6px;
+  }
+
+  .comparison-table thead th {
+    height: 38px;
+  }
+
+  /* taller rows - two-line labels (mobile only) */
+  .comparison-table .tall-row td {
+    height: 40px;
+  }
+
+  /* sticky columns */
+  .comparison-table .feature-col {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    padding-left: 9px;
+  }
+
+  .comparison-table .lyca-col {
+    position: sticky;
+    left: 33cqw;
+    z-index: 2;
+  }
+
+  /* Competitor cells stay square so the top / bottom frame lines run */
+  .comparison-table thead .cmp:last-child,
+  .comparison-table .last-row .cmp:last-child {
+    border-radius: 0;
+  }
+
+  .table-outer {
+    position: relative;
+  }
+
+  .table-outer::before,
+  .table-outer::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: var(--radius);
+    height: var(--radius);
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .table-outer::before {
+    top: var(--bleed);
+    background: radial-gradient(circle at 0 100%,
+      transparent calc(var(--radius) - 2px),
+      var(--frame) calc(var(--radius) - 2px),
+      var(--frame) var(--radius),
+      #fff var(--radius));
+  }
+
+  .table-outer::after {
+    bottom: var(--cta-h);
+    background: radial-gradient(circle at 0 0,
+      transparent calc(var(--radius) - 2px),
+      var(--frame) calc(var(--radius) - 2px),
+      var(--frame) var(--radius),
+      #fff var(--radius));
+  }
+
+  .comparison-table .cta-row td,
+  .comparison-table .cta-row .feature-col,
+  .comparison-table .cta-row .lyca-col,
+  .comparison-table .cta-row .cmp {
+    height: var(--cta-h);
+    padding-top: calc(var(--bleed) + 10px);
+    vertical-align: top;
+  }
+
+  .buy-plan-btn {
+    width: 86%;
+    height: 30px;
+    border-radius: 6px;
+    font-size: 11px;
+  }
+
+  /* dots */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .carousel-dots button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--dot);
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .carousel-dots button.is-active {
+    background: var(--green);
+  }
+
+  .comparison-notes {
+    margin-top: 26px;
+    padding: 0 2px;
+    font-size: 11px;
+  }
+}
