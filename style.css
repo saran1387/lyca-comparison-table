@@ -229,19 +229,24 @@ body {
 
 .m-only { display: none; }
 
-/* DESKTOP ONLY: wider giffgaff / SMARTY / Three / O2 columns */
+/* DESKTOP ONLY: */
 @media (min-width: 768px) {
-  
+
+  .table-scroll {
+    overflow-x: auto;
+  }
+
+  .comparison-table {
+    table-layout: auto;
+  }
+
   .comparison-table th.feature-col { width: 22%; }
   .comparison-table th.lyca-col    { width: 14%; }
+  .comparison-table th.cmp         { width: 16%; }
 
   .comparison-table td.cmp {
     white-space: nowrap;
   }
-}
-
-.mobile-view {
-  display: none;
 }
 
 /* MOBILE: Carousel slide */
@@ -403,7 +408,4 @@ body {
     padding: 0 2px;
     font-size: 11px;
   }
-  .mobile-view {
-  display: block;
-}
 }
